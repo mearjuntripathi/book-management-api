@@ -1,0 +1,18 @@
+{
+  "name": "book-management-api",
+  "version": "1.0.0",
+  "description": "This is a simple RESTful API built with Node.js and Express.js for managing book entries. It provides functionalities for user authentication, CRUD operations for managing book entries, filtering books by author or publication year, and basic security measures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2"
+  }
+}
