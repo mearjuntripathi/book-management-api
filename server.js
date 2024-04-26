@@ -19,7 +19,10 @@ app.get('/:id', validateUser, bookServices.getBookById);
 app.post('/', validateUser, bookServices.createBook);
 app.put('/:id', validateUser, bookServices.updateBook);
 app.delete('/:id', validateUser, bookServices.deleteBook);
-app.get('/:filter', validateUser, bookServices.filterBooks);
+
+
+// filter value
+app.get('/books/filter', validateUser, bookServices.filterBooks);
 
 
 app.listen(port, console.log(`Server Listening on: http://localhost:${port}`));

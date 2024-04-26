@@ -21,11 +21,11 @@ const bookService = {
     return await Book.find({author: author, publicationYear: year});
   },
   filterBooksByAuthor: async (author) => {
-    return await Book.find({ author });
+    return await Book.find({ author: author });
   },
   filterBooksByYear: async (year) => {
-    return await Book.find({ publicationYear: year });
+    return await Book.find({ publicationYear: (year) });
   }
 };
 
-module.exports = {bookService};
+module.exports = bookService;

@@ -84,3 +84,35 @@ The Book Management API is a Node.js-based RESTful API that provides functionali
 ## Environment Variables
 
 - `PORT`: Port number for the server (default is 3000).
+
+
+## Usage
+Including instructions on how to use Postman to interact with the API endpoints:
+
+### Authentication
+
+- **POST /login**: Endpoint for user login. Requires `email` and `password` in the request body.
+- **POST /signup**: Endpoint for user signup. Requires `email`, `password`, and `name` in the request body.
+
+### Book Management
+
+- **GET /**: Retrieve all books.
+- **GET /:id**: Retrieve a book by its ID.
+- **POST /**: Create a new book. Requires `title`, `author`, and `publicationYear` in the request body.
+- **PUT /:id**: Update a book by its ID. Requires `title`, `author`, and `publicationYear` in the request body.
+- **DELETE /:id**: Delete a book by its ID.
+
+### Filtering Books
+
+- **GET /api/books/filter**: Filter books by author and/or publication year. Supports query parameters `author` and `year`.
+
+## Testing with Postman
+
+1. Download and install [Postman](https://www.postman.com/downloads/).
+2. Import the provided [Postman Collection](link_to_postman_collection_file).
+3. Set up environment variables in Postman for `BASE_URL` and `TOKEN` (if authentication is enabled).
+4. Start testing the API endpoints.
+
+## Postman Collection
+
+You can find the Postman Collection for this API in this repo [JSON FILe](./book-magement-api.postman_collection.json).

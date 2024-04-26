@@ -1,12 +1,14 @@
-// Validat use it has taoken and it token is correct or not
+// Validate use it has taoken and it token is correct or not
+const {getUser} = require('../services/auth');
+
 function validateUser(req, res, next) {
-    const token = req.header?.bearer;
+    const token = req.headers.authorization?.split(' ')[1];
     if(token){
         const {_id, email, name} = getUser(token);
         console.log(_id, email, name);
         return next();
     }
-    res.send(401).json({message: 'You Are not Autherized'});
+    return res.sendStatus(401);
 }
 
 // Middleware to validate email
