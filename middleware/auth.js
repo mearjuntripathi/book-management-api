@@ -1,3 +1,4 @@
+// Validat use it has taoken and it token is correct or not
 function validateUser(req, res, next) {
     const token = req.header?.bearer;
     if(token){

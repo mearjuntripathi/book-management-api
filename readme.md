@@ -1,82 +1,86 @@
 # Book Management API
 
-This is a simple RESTful API built with Node.js and Express.js for managing book entries. It provides functionalities for user authentication, CRUD operations for managing book entries, filtering books by author or publication year, and basic security measures.
+The Book Management API is a Node.js-based RESTful API that provides functionalities for managing book entries. It offers user authentication, CRUD operations for book management, and filtering books by author or publication year.
 
-## Table of Contents
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Endpoints](#endpoints)
-4. [Authentication](#authentication)
-5. [Security](#security)
-6. [Contributing](#contributing)
-7. [License](#license)
+## Features
+
+- User authentication using login and signup endpoints.
+- CRUD operations for managing book entries (Create, Read, Update, Delete).
+- Filtering books by author or publication year.
+- Implementation of basic security measures including input validation.
+
+## Technologies Used
+
+- **Node.js**: A JavaScript runtime environment that executes JavaScript code outside a web browser. Used as the backend runtime for the API.
+  
+- **Express.js**: A minimalist web framework for Node.js that provides a robust set of features for building web and mobile applications. Used for handling routing, middleware, and request/response processing.
+
+- **bcryptjs**: A library for hashing passwords using bcrypt, a cryptographic hash function designed to securely hash passwords. Used for password hashing to enhance security.
+
+- **dotenv**: A zero-dependency module that loads environment variables from a `.env` file into `process.env`. Used for managing sensitive configuration data such as port numbers and database credentials.
 
 ## Installation
 
-1. Clone the repository:
+### Prerequisites
 
-```
-git clone https://github.com/mearjuntripathi/book-management-api.git
-```
+- Node.js and npm installed on your machine.
 
-2. Install dependencies:
+### Installation
 
-```
-cd book-management-api
-npm install
-```
+1. Clone this repository to your local machine:
 
-3. Set up environment variables:
+    ```bash
+    git clone https://github.com/your-username/book-management-api.git
+    ```
 
-Create a `.env` file in the root directory and add the following:
+2. Navigate to the project directory:
 
-```
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/book_management
-JWT_SECRET=your_secret_key
-```
+    ```bash
+    cd book-management-api
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+4. Create a `.env` file in the root directory and specify the environment variables:
+
+    ```plaintext
+    PORT=3000
+    ```
 
 ## Usage
 
-Start the server:
+1. Start the server:
 
-```
-npm start
-```
+    ```bash
+    npm start
+    ```
 
-The API server will be running at `http://localhost:3000`.
+2. Use an API testing tool like Postman to interact with the API endpoints.
 
-## Endpoints
+## API Endpoints
 
-The API exposes the following endpoints:
+#### Authentication
 
-- `POST /api/auth/register`: Register a new user.
-- `POST /api/auth/login`: Login user and generate JWT token.
-- `GET /api/books`: Get all books.
-- `GET /api/books/:id`: Get a book by ID.
-- `POST /api/books`: Create a new book entry.
-- `PUT /api/books/:id`: Update a book by ID.
-- `DELETE /api/books/:id`: Delete a book by ID.
-- `GET /api/books/filter?author=authorName`: Filter books by author.
-- `GET /api/books/filter?year=publicationYear`: Filter books by publication year.
+- `POST /login`: User login.
+- `POST /signup`: User signup.
 
-## Authentication
+#### Book Management
 
-The API uses JWT (JSON Web Tokens) for user authentication. To access protected routes, include the JWT token in the `Authorization` header of the request:
+- `GET /`: Get all books.
+- `GET /:id`: Get a book by ID.
+- `POST /`: Create a new book.
+- `PUT /:id`: Update an existing book.
+- `DELETE /:id`: Delete a book by ID.
 
-```
-Authorization: Bearer <JWT_TOKEN>
-```
+#### Filtering
 
-## Security
+- `GET /filter?author=:author`: Filter books by author.
+- `GET /filter?year=:year`: Filter books by publication year.
 
-- Input validation is implemented using `express-validator` to prevent common security vulnerabilities like SQL injection and XSS attacks.
-- Environment variables are used to store sensitive information like database URI and JWT secret key.
+## Environment Variables
 
-## Contributing
-
-Contributions are welcome! If you find any bugs or have suggestions for improvement, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- `PORT`: Port number for the server (default is 3000).

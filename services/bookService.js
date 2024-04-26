@@ -1,5 +1,4 @@
 // services/bookService.js
-
 const Book = require('../model/book');
 
 const bookService = {
@@ -18,6 +17,9 @@ const bookService = {
   deleteBook: async (id) => {
     return await Book.findByIdAndDelete(id);
   },
+  filterBooksByAuthorAndYear: async (author, year) => {
+    return await Book.find({author: author, publicationYear: year});
+  },
   filterBooksByAuthor: async (author) => {
     return await Book.find({ author });
   },
@@ -26,4 +28,4 @@ const bookService = {
   }
 };
 
-module.exports = bookService;
+module.exports = {bookService};

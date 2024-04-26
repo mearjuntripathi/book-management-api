@@ -2,27 +2,24 @@ require('dotenv').config();
 const express = require('express');
 const port = process.env.PORT || 3000;
 const app = express();
-const {login, signup} = require('./model/authentication');
-const {validateEmail, validatePassword, validateUser} = require('./middleware/auth');
+const { login, signup } = require('./model/authentication');
+const { validateEmail, validatePassword, validateUser } = require('./middleware/auth');
+const { bookServices } = require('./endpoints/bookServices');
 
-const bookService = require('./services/bookService');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // authentication & authrization
 app.post('/login', login);
-app.signup('/signup', validateEmail, validatePassword, signup);
+app.post('/signup', validateEmail, validatePassword, signup);
 
 // CRUD operation with middleware
-app.get('/', async (req, res) => {
-    try {
-        const books = await bookService.getAllBooks();
-        res.json(books);
-    } catch (error) {
-        console.error('Error getting books:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
+app.get('/', validateUser, bookServices.getAllBooks);
+app.get('/:id', validateUser, bookServices.getBookById);
+app.post('/', validateUser, bookServices.createBook);
+app.put('/:id', validateUser, bookServices.updateBook);
+app.delete('/:id', validateUser, bookServices.deleteBook);
+app.get('/:filter', validateUser, bookServices.filterBooks);
 
 
 app.listen(port, console.log(`Server Listening on: http://localhost:${port}`));
