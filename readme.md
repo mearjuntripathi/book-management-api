@@ -70,6 +70,15 @@ The Book Management API is a Node.js-based RESTful API that provides functionali
 
 #### Book Management
 
+The API uses JWT (JSON Web Tokens) for user authentication. To access protected routes, include the JWT token in the Authorization header of the request:
+
+```makefile
+Authorization: Bearer <JWT_TOKEN>
+```
+##### Security
+1. Input validation is implemented using express-validator to prevent common security vulnerabilities like SQL injection and XSS attacks.
+2. Environment variables are used to store sensitive information like database URI and JWT secret key.
+
 - `GET /`: Get all books.
 - `GET /:id`: Get a book by ID.
 - `POST /`: Create a new book.
@@ -105,6 +114,29 @@ Including instructions on how to use Postman to interact with the API endpoints:
 ### Filtering Books
 
 - **GET /api/books/filter**: Filter books by author and/or publication year. Supports query parameters `author` and `year`.
+
+### File Sructure
+
+```bash
+book-management-api/
+├── endpoints/
+|   └── bookServices.js
+├── middleware/
+├── model/
+|   ├── authentication.js
+|   ├── book.js
+|   ├── db.js
+|   └── user.js
+├── services/
+|   ├── auth.js
+|   └── bookService.js
+├── .env
+├── .gitignore
+├── book-magement-api.postman_collection.json
+├── package.json
+├── readme.md
+└── server.js
+```
 
 ## Testing with Postman
 
